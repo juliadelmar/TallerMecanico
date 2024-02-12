@@ -1,5 +1,8 @@
 package org.iesalandalus.programacion.tallermecanico.modelo.dominio;
 
+import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Cliente;
+import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Revision;
+import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -192,7 +195,7 @@ class RevisionTest {
     @ParameterizedTest(name = "Cuando llamamos a getPrecio y se han añadido {0} horas y {1} precio de material calcula el precio como {2}")
     @CsvSource({"0, 1, 1, 31.5", "1, 1, 1, 41.5", "5, 1, 1, 81.5", "0, 2, 2, 63.0", "1, 2, 2, 73.0", "5, 2, 2, 113.0",
             "0, 5, 5, 157.5", "1, 5, 5, 167.5", "5, 5, 5, 207.5", "0, 10, 10, 315.0", "1, 10, 10, 325.0", "5, 10, 10, 365.0",
-            "0, 10, 100, 450.0", "1, 10, 100, 460.0", "5, 10, 100, 500.0"})
+                   "0, 10, 100, 450.0", "1, 10, 100, 460.0", "5, 10, 100, 500.0"})
     void getPrecioCalculaCorrectamentePrecio(int dias, int horas, float precioMaterial, float precio) {
         Revision revisonSemanaPasada = new Revision(cliente, vehiculo, semanaPasada);
         assertDoesNotThrow(() -> revisonSemanaPasada.anadirHoras(horas));
