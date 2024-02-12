@@ -1,17 +1,13 @@
 package org.iesalanadalus.programacion.tallermecanico.modelo.dominio;
-
-import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Cliente;
-import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
-
 import javax.naming.OperationNotSupportedException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Revision {
-    private static final float PRECIO_HORA = 30.5f;
+    private static final float PRECIO_HORA = 30.00f;
     private static final float PRECIO_DIA = 10.0f;
-    private static final float PRECIO_MATERIAL = 100.0f;
+    private static final float PRECIO_MATERIAL = 1.5f;
     public static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
@@ -142,7 +138,8 @@ public class Revision {
     public float getPrecio() {
         float precioHoras = horas * PRECIO_HORA;
         float precioDias = getDias() * PRECIO_DIA;
-        return precioHoras + precioDias + precioMaterial;
+        return precioHoras + precioDias + precioMaterial*PRECIO_MATERIAL;
+
     }
 
     private float getDias() {
