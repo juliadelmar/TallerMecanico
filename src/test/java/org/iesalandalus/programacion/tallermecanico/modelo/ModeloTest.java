@@ -1,11 +1,12 @@
 package org.iesalandalus.programacion.tallermecanico.modelo;
 
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.Clientes;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.Revisiones;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.Vehiculos;
+import org.iesalanadalus.programacion.tallermecanico.modelo.Modelo;
+import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Cliente;
+import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Revision;
+import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
+import org.iesalanadalus.programacion.tallermecanico.modelo.negocio.Clientes;
+import org.iesalanadalus.programacion.tallermecanico.modelo.negocio.Revisiones;
+import org.iesalanadalus.programacion.tallermecanico.modelo.negocio.Vehiculos;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;

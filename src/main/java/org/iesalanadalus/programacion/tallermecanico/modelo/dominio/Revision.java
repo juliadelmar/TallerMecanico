@@ -143,11 +143,11 @@ public class Revision {
     }
 
     private float getDias() {
+        float dias = 0;
         if (fechaFin != null) {
-            return (float) fechaInicio.until(fechaFin).getDays();
-        } else {
-            return 0;
+            dias= (float) fechaInicio.until(fechaFin).getDays();
         }
+        return dias;
     }
 
     @Override

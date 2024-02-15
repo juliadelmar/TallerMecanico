@@ -1,9 +1,8 @@
 package org.iesalandalus.programacion.tallermecanico.modelo.negocio;
-
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
+import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Cliente;
+import org.iesalanadalus.programacion.tallermecanico.modelo.negocio.Clientes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import javax.naming.OperationNotSupportedException;
 import java.util.List;
 
