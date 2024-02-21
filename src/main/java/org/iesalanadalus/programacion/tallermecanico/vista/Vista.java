@@ -52,7 +52,7 @@ public class Vista {
             case ANADIR_PRECIO_MATERIAL_REVISON -> anadirPrecioMaterial();
         }
     }
-    private void cerrarRevision(){
+    private void cerrarRevision() throws OperationNotSupportedException {
         Revision revision = Consola.leerRevision();
         LocalDate localDate = Consola.leerFechaCierre();
         controlador.cerrar(revision,localDate);
@@ -61,13 +61,13 @@ public class Vista {
     private void salir(){
         controlador.terminar();
     }
-    private void insertarCliente(){
+    private void insertarCliente() throws OperationNotSupportedException {
         Consola.mostrarCabecera("Insertar cliente ");
         Cliente cliente = Consola.leerCliente();
             controlador.insertar(cliente);
         System.out.println("El cliente:" + cliente + "ha sido añadido a la lista .");
     }
-    private void insertarVehiculo(){
+    private void insertarVehiculo() throws OperationNotSupportedException {
         Consola.mostrarCabecera("Insertar vehiculo ");
 
         Vehiculo vehiculo = Consola.leerVehiculo();
@@ -75,7 +75,7 @@ public class Vista {
         System.out.println("El vehiculo:" + vehiculo + "ha sido añadido a la lista.");
 
     }
-    private void insertarRevision(){
+    private void insertarRevision() throws OperationNotSupportedException {
         Consola.mostrarCabecera("Insertar revision ");
 
         Revision revision = Consola.leerRevision();
@@ -119,7 +119,7 @@ public class Vista {
         controlador.buscar(vehiculo);
         System.out.println("El vehiculo : " + vehiculo + "ha sido encontrado");
     }
-    private void buscarRevision(){
+    private void buscarRevision() throws OperationNotSupportedException {
         Consola.mostrarCabecera("Buscar revision ");
         Revision revision = Consola.leerRevision();
         controlador.buscar(revision);
@@ -146,7 +146,7 @@ public class Vista {
         controlador.modificar(Consola.leerClieneDni(),Consola.leerNuevoNombre(),Consola.leerNuevoTelefono());
 
     }
-    private void anadirHoras(){
+    private void anadirHoras() throws OperationNotSupportedException {
         Consola.mostrarCabecera("Añadir horas ");
 
         Revision revision = Consola.leerRevision();
