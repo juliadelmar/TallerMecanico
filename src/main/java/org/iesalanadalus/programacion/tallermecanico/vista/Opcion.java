@@ -5,25 +5,25 @@ import java.util.Map;
 import java.util.Objects;
 
 public enum  Opcion {
-    INSERTAR_CLIENTE("Insertar cliente",1),
-    BUSCAR_CLIENTE("Buscar cliente",2),
-    BORRAR_CLIENTE("Borra cliente",3),
-    LISTAR_CLIENTES("Listar clientes",4),
-    MODIFICAR_CLIENTE("Modificar Clientes",5 ),
-    INSERTAR_VEHICULO("Insertar vehiculo",6),
-    BUSCAR_VEHICULO("Buscar vehiculo",7),
-    BORRAR_VEHICULO("Insertar vehiculo",8),
-    LISTAR_VEHICULOS("Listar vehiculos",9),
-    INSERTAR_REVISION("Insertar revision",10),
-    BUSCAR_REVISION("Buscar revision",11),
-    BORRAR_REVISION("Borrar revision",12),
-    LISTAR_REVISIONES("Listar revisiones",13),
-    LISTAR_REVISIONES_CLIENTES("Listar revisiones por clientes",14),
-    LISTAR_REVISIONES_VEHICULOS("Listar revisiones por vehiculos",15),
-    ANADIR_HORAS_REVISION("Añadir horas revision ",16),
-    ANADIR_PRECIO_MATERIAL_REVISON("Añadir precio material revision ",17),
-    CERRAR_REVISION("Cerrar revision",18),
-    SALIR("Salir",19);
+    INSERTAR_CLIENTE("Insertar cliente",11),
+    BUSCAR_CLIENTE("Buscar cliente",12),
+    BORRAR_CLIENTE("Borra cliente",13),
+    LISTAR_CLIENTES("Listar clientes",14),
+    MODIFICAR_CLIENTE("Modificar Clientes",15 ),
+    INSERTAR_VEHICULO("Insertar vehiculo",21),
+    BUSCAR_VEHICULO("Buscar vehiculo",22),
+    BORRAR_VEHICULO("Insertar vehiculo",23),
+    LISTAR_VEHICULOS("Listar vehiculos",24),
+    INSERTAR_REVISION("Insertar revision",31),
+    BUSCAR_REVISION("Buscar revision",32),
+    BORRAR_REVISION("Borrar revision",33),
+    LISTAR_REVISIONES("Listar revisiones",34),
+    LISTAR_REVISIONES_CLIENTES("Listar revisiones por clientes",35),
+    LISTAR_REVISIONES_VEHICULOS("Listar revisiones por vehiculos",36),
+    ANADIR_HORAS_REVISION("Añadir horas revision ",37),
+    ANADIR_PRECIO_MATERIAL_REVISON("Añadir precio material revision ",38),
+    CERRAR_REVISION("Cerrar revision",39),
+    SALIR("Salir",0);
     private  String nombre;
     private  Integer numeroOpcion;
     private static final Map<Integer, Opcion> opciones = new HashMap<>();
@@ -50,6 +50,6 @@ public enum  Opcion {
 
     @Override
     public String toString() {
-        return String.format("Opcion[nombre=%s, numeroOpcion=%s]", this.nombre, this.numeroOpcion);
+        return String.format("%s. %s ", this.numeroOpcion, this.nombre);
     }
 }

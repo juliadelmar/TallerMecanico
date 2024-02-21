@@ -1,6 +1,6 @@
 package org.iesalanadalus.programacion.tallermecanico.vista;
 
-import org.iesalanadalus.programacion.tallermecanico.modelo.Modelo;
+
 import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Revision;
 import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Consola {
-    private static String CADENA_FORMATO_FECHA= "\\d{2}/\\d/\\d{4}" ;
+    private static final String  CADENA_FORMATO_FECHA= "\\d{2}/\\d/\\d{4}" ;
 
     public Consola() {
     }

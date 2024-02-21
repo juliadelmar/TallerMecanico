@@ -7,12 +7,13 @@ import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
 import org.iesalanadalus.programacion.tallermecanico.vista.Vista;
 import javax.naming.OperationNotSupportedException;
 import java.time.LocalDate;
+
 import java.util.List;
 import java.util.Objects;
 
 public class Controlador {
-    private Modelo modelo;
-    private Vista vista;
+    private final Modelo modelo;
+    private final Vista vista;
 
 
     public Controlador(Modelo modelo, Vista vista) {
@@ -32,27 +33,21 @@ public class Controlador {
         modelo.terminar();
         vista.terminar();
     }
-    public void insertar(Cliente cliente){
-        try {
-            modelo.insertar(cliente);
-        } catch (OperationNotSupportedException e) {
-            throw new RuntimeException(e);
-        }
+    public void insertar(Cliente cliente) throws OperationNotSupportedException {
+
+        modelo.insertar(cliente);
+
 
     }
-    public void insertar(Vehiculo vehiculo){
-        try {
-            modelo.insertar(vehiculo);
-        } catch (OperationNotSupportedException e) {
-            throw new RuntimeException(e);
-        }
+    public void insertar(Vehiculo vehiculo) throws OperationNotSupportedException {
+
+        modelo.insertar(vehiculo);
+
     }
-    public void  insertar(Revision revision){
-        try {
-            modelo.insertar(revision);
-        } catch (OperationNotSupportedException e) {
-            throw new RuntimeException(e);
-        }
+    public void  insertar(Revision revision) throws OperationNotSupportedException {
+
+        modelo.insertar(revision);
+
     }
     public void buscar(Cliente cliente){
         modelo.buscar(cliente);
@@ -60,33 +55,25 @@ public class Controlador {
     public void buscar(Vehiculo vehiculo){
         modelo.buscar(vehiculo);
     }
-    public void buscar(Revision revision){
-        try {
+    public void buscar(Revision revision) throws OperationNotSupportedException {
             modelo.borrar(revision);
-        } catch (OperationNotSupportedException e) {
-            throw new RuntimeException(e);
-        }
+
 
     }
     public boolean modificar(Cliente cliente, String nombre, String telefono) throws OperationNotSupportedException {
-    return modelo.modificar(cliente,nombre,telefono);
+
+        return modelo.modificar(cliente,nombre,telefono);
     }
-    public void anadirHoras(Revision revision,int horas){
-        try {
-            modelo.anadirHoras(revision,horas);
-        } catch (OperationNotSupportedException e) {
-            throw new RuntimeException(e);
-        }
+    public void anadirHoras(Revision revision,int horas) throws OperationNotSupportedException {
+        modelo.anadirHoras(revision,horas);
+
     }
     public void anadirPrecioMaterial(Revision revision, float precioMaterial) throws OperationNotSupportedException {
         modelo.anadirPrecioMaterial(revision,precioMaterial);
     }
-    public void cerrar(Revision revision, LocalDate fechaFin){
-        try {
-            modelo.cerrar(revision, fechaFin);
-        } catch (OperationNotSupportedException e) {
-            throw new RuntimeException(e);
-        }
+    public void cerrar(Revision revision, LocalDate fechaFin) throws OperationNotSupportedException {
+        modelo.cerrar(revision, fechaFin);
+
     }
     public void borrar(Cliente cliente) throws OperationNotSupportedException {
             modelo.borrar(cliente);
@@ -99,20 +86,31 @@ public class Controlador {
         modelo.borrar(revision);
     }
     public List<Cliente> getClientes(){
+        List<Cliente> clientes = modelo.getClientes();
+        System.out.println(clientes);
 
-        return modelo.getClientes();
+        return clientes;
     }
     public List<Vehiculo> getVehiculos(){
-        return modelo.getVehiculos();
+        List<Vehiculo> vehiculos = modelo.getVehiculos();
+        System.out.println(vehiculos);
+        return vehiculos;
     }
+
     public List<Revision> getRevisiones(){
-        return modelo.getRevisiones();
+        List<Revision> revisions = modelo.getRevisiones();
+        System.out.println(revisions);
+        return  revisions;
     }
     public List<Revision> getRevisiones(Cliente cliente){
-        return modelo.getRevisiones(cliente);
+        List<Revision> revisions = modelo.getRevisiones(cliente);
+        System.out.println("Lista de revisiones para el cliente"+ cliente + "es"+ revisions);
+        return  revisions;
     }
     public List<Revision> getRevisiones(Vehiculo vehiculo){
-        return modelo.getRevisiones(vehiculo);
+        List<Revision> revisions = modelo.getRevisiones(vehiculo);
+        System.out.println("Lista de revisiones para el vehiculo"+ vehiculo + "es"+ revisions);
+        return  revisions;
     }
 
 
