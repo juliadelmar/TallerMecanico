@@ -1,8 +1,10 @@
 package org.iesalandalus.programacion.tallermecanico.modelo.negocio;
-import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Cliente;
-import org.iesalanadalus.programacion.tallermecanico.modelo.negocio.Clientes;
+
+import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Clientes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import javax.naming.OperationNotSupportedException;
 import java.util.List;
 
@@ -14,7 +16,7 @@ class ClientesTest {
 
     private static Cliente cliente1;
     private static Cliente cliente2;
-    private Clientes clientes;
+    private IClientes clientes;
 
     @BeforeEach
     void init() {
