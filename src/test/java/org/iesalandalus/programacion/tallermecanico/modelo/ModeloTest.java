@@ -1,10 +1,15 @@
 package org.iesalandalus.programacion.tallermecanico.modelo;
 
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.*;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.*;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Clientes;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Trabajos;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Vehiculos;
+import org.iesalanadalus.programacion.tallermecanico.modelo.FabricaModelo;
+import org.iesalanadalus.programacion.tallermecanico.modelo.Modelo;
+import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.*;
+import org.iesalanadalus.programacion.tallermecanico.modelo.negocio.IClientes;
+import org.iesalanadalus.programacion.tallermecanico.modelo.negocio.ITrabajos;
+import org.iesalanadalus.programacion.tallermecanico.modelo.negocio.IVehiculos;
+import org.iesalanadalus.programacion.tallermecanico.modelo.negocio.memoria.Clientes;
+import org.iesalanadalus.programacion.tallermecanico.modelo.negocio.memoria.FabricaFuenteDatos;
+import org.iesalanadalus.programacion.tallermecanico.modelo.negocio.memoria.Trabajos;
+import org.iesalanadalus.programacion.tallermecanico.modelo.negocio.memoria.Vehiculos;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,7 +33,6 @@ class ModeloTest {
     private static ITrabajos trabajos;
     @InjectMocks
     private Modelo modelo = FabricaModelo.CASCADA.crear(FabricaFuenteDatos.MEMORIA);
-
     private static Cliente cliente;
     private static Vehiculo vehiculo;
     private static Revision revision;

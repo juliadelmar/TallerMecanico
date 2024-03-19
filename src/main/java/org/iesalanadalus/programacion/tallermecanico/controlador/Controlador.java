@@ -1,17 +1,10 @@
 package org.iesalanadalus.programacion.tallermecanico.controlador;
-
 import org.iesalanadalus.programacion.tallermecanico.modelo.Modelo;
-import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Cliente;
-import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Revision;
-import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
 import org.iesalanadalus.programacion.tallermecanico.vista.Vista;
-import javax.naming.OperationNotSupportedException;
-import java.time.LocalDate;
-
-import java.util.List;
+import org.iesalanadalus.programacion.tallermecanico.vista.eventos.Evento;
 import java.util.Objects;
 
-public class Controlador {
+public class Controlador implements IControlador {
     private final Modelo modelo;
     private final Vista vista;
 
@@ -21,96 +14,71 @@ public class Controlador {
         Objects.requireNonNull(vista,"La vista es nulo");
         this.modelo = modelo;
         this.vista = vista;
-        vista.setControlador(this);
+        vista.getGestorEventos().suscribir(this, Evento.values());
     }
-    public void comenzar() throws OperationNotSupportedException {
+    @Override
+    public void comenzar() {
         modelo.comenzar();
         /* inicializa cosas*/
         vista.comenzar();
     }
 
+    @Override
     public void terminar() {
         modelo.terminar();
         vista.terminar();
     }
-    public void insertar(Cliente cliente) throws OperationNotSupportedException {
+    @Override
+    public void actualizarEvento(Evento evento){
+        try {
+            String resultado = "";
+            switch (evento){
+                case INSERTAR_CLIENTE ->{ modelo.insertar(vista.leerCliente()); resultado = "Cliente insertado correctamente." ;}
+                case INSERTAR_MECANICO -> { modelo.insertar(vista.leerMecanico()); resultado = "Trabajo de mecánico insertado correctamente." ;}
+                case INSERTAR_REVISION -> {modelo.insertar(vista.leerRevision()); resultado = "Trabajo de revisión insertado correctamente." ;}
+                case INSERTAR_VEHICULO -> { modelo.insertar(vista.leerVehiculo()); resultado = "Vehiculo insertado correctamente. ";}
+                case BUSCAR_CLIENTE ->  vista.mostrarCliente(modelo.buscar(vista.leerClieneDni()));
+                case BUSCAR_VEHICULO -> vista.mostrarVehiculos(modelo.buscar(vista.leerMatriculaVehiculo()));
+                case BUSCAR_TRABAJO -> vista.mostrarTrabajo(modelo.buscar(vista.leerRevision()));
+                case MODIFICAR_CLIENTE -> resultado = (modelo.modificar(vista.leerClieneDni(),vista.leerNuevoNombre(),vista.leerNuevoTelefono())) ? "EL cliente ha sido modificado correctamente.": "EL cliente no ha sido modificado correctamente." ;
 
-        modelo.insertar(cliente);
-
-
-    }
-    public void insertar(Vehiculo vehiculo) throws OperationNotSupportedException {
-
-        modelo.insertar(vehiculo);
-
-    }
-    public void  insertar(Revision revision) throws OperationNotSupportedException {
-
-        modelo.insertar(revision);
-
-    }
-    public void buscar(Cliente cliente){
-        modelo.buscar(cliente);
-    }
-    public void buscar(Vehiculo vehiculo){
-        modelo.buscar(vehiculo);
-    }
-    public void buscar(Revision revision) throws OperationNotSupportedException {
-            modelo.borrar(revision);
-
-
-    }
-    public boolean modificar(Cliente cliente, String nombre, String telefono) throws OperationNotSupportedException {
-
-        return modelo.modificar(cliente,nombre,telefono);
-    }
-    public void anadirHoras(Revision revision,int horas) throws OperationNotSupportedException {
-        modelo.anadirHoras(revision,horas);
-
-    }
-    public void anadirPrecioMaterial(Revision revision, float precioMaterial) throws OperationNotSupportedException {
-        modelo.anadirPrecioMaterial(revision,precioMaterial);
-    }
-    public void cerrar(Revision revision, LocalDate fechaFin) throws OperationNotSupportedException {
-        modelo.cerrar(revision, fechaFin);
-
-    }
-    public void borrar(Cliente cliente) throws OperationNotSupportedException {
-            modelo.borrar(cliente);
-
-    }
-    public void borrar(Vehiculo vehiculo) throws OperationNotSupportedException {
-        modelo.borrar(vehiculo);
-    }
-    public void borrar(Revision revision) throws OperationNotSupportedException {
-        modelo.borrar(revision);
-    }
-    public List<Cliente> getClientes(){
-        List<Cliente> clientes = modelo.getClientes();
-        System.out.println(clientes);
-
-        return clientes;
-    }
-    public List<Vehiculo> getVehiculos(){
-        List<Vehiculo> vehiculos = modelo.getVehiculos();
-        System.out.println(vehiculos);
-        return vehiculos;
-    }
-
-    public List<Revision> getRevisiones(){
-        List<Revision> revisions = modelo.getRevisiones();
-        System.out.println(revisions);
-        return  revisions;
-    }
-    public List<Revision> getRevisiones(Cliente cliente){
-        List<Revision> revisions = modelo.getRevisiones(cliente);
-        System.out.println("Lista de revisiones para el cliente"+ cliente + "es"+ revisions);
-        return  revisions;
-    }
-    public List<Revision> getRevisiones(Vehiculo vehiculo){
-        List<Revision> revisions = modelo.getRevisiones(vehiculo);
-        System.out.println("Lista de revisiones para el vehiculo"+ vehiculo + "es"+ revisions);
-        return  revisions;
+                case ANADIR_PRECIO_MATERIAL_TRABAJO -> {
+                    modelo.anadirPrecioMaterial(vista.leerMecanico(), vista.leerPrecioMaterial());
+                    resultado = "Precio añadido correctamente.";
+                }
+                case ANADIR_HORAS_TRABAJO -> {
+                    modelo.anadirHoras(vista.leerTrabajoVehiculo(), vista.leerHoras());
+                    resultado = "Horas añadidas correctamente.";
+                }
+                case CERRAR_TRABAJO -> {
+                    modelo.cerrar(vista.leerTrabajoVehiculo(),vista.leerFechaCierre());
+                    resultado = "Trabajo cerrado correctamente.";
+                }
+                case BORRAR_CLIENTE -> {
+                    modelo.borrar(vista.leerClieneDni());
+                    resultado  = "Cliente borrado correctamente";
+                }
+                case BORRAR_TRABAJO ->{
+                    modelo.borrar(vista.leerRevision());
+                    resultado  = "Trabajo borrado correctamente";
+                }
+                case BORRAR_VEHICULO -> {
+                    modelo.borrar(vista.leerVehiculo());
+                    resultado = "Vehiculo borrado correctamente.";
+                }
+                case LISTAR_CLIENTES -> vista.mostrarClientes(modelo.getClientes());
+                case LISTAR_VEHICULOS -> vista.mostrarVehiculos(modelo.getVehiculos());
+                case LISTAR_TRABAJOS -> vista.mostrarTrabajos(modelo.getTrabajos());
+                case LISTAR_TRABAJOS_CLIENTES -> vista.mostrarTrabajos(modelo.getTrabajos(vista.leerClieneDni()));
+                case LISTAR_TRABAJOS_VEHICULOS -> vista.mostrarTrabajos(modelo.getTrabajos(vista.leerMatriculaVehiculo()));
+                case SALIR -> terminar();
+            }
+            if (!resultado.isBlank()){
+                vista.notificarEvento(evento, resultado, true);
+            }
+        } catch (Exception e) {
+            vista.notificarEvento(evento, e.getMessage(), true);
+        }
     }
 
 

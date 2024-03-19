@@ -8,13 +8,10 @@ public record Vehiculo(String marca, String modelo, String matricula) {
 
     private static final String ER_MATRICULA = "^\\d{4}[BCDFGHJKLMNPRSTVWXYZ]{3}";
 
-    public Vehiculo(String marca, String modelo, String matricula) {
+    public Vehiculo {
         validarMarca(marca);
         validarModelo(modelo);
         validarMatricula(matricula);
-        this.marca = marca;
-        this.modelo = modelo;
-        this.matricula = matricula;
     }
 
     private void validarMarca(String marca) {

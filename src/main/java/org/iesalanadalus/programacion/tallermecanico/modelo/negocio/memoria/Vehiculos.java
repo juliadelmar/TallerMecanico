@@ -1,25 +1,30 @@
-package org.iesalanadalus.programacion.tallermecanico.modelo.negocio;
+package org.iesalanadalus.programacion.tallermecanico.modelo.negocio.memoria;
 
 import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Cliente;
+import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Trabajo;
 import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
+import org.iesalanadalus.programacion.tallermecanico.modelo.negocio.IClientes;
+import org.iesalanadalus.programacion.tallermecanico.modelo.negocio.IVehiculos;
 
 import javax.naming.OperationNotSupportedException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Vehiculos {
+public class Vehiculos implements IVehiculos {
     private List<Vehiculo> coleccionVehiculos;
 
     public Vehiculos() {
         coleccionVehiculos = new ArrayList<>();
     }
 
+    @Override
     public List<Vehiculo> get() {
 
         return new ArrayList<>(coleccionVehiculos);
     }
 
+    @Override
     public void insertar(Vehiculo vehiculo) throws OperationNotSupportedException {
         Objects.requireNonNull(vehiculo, "No se puede insertar un vehículo nulo.");
         if (coleccionVehiculos.contains(vehiculo)) {
@@ -28,6 +33,7 @@ public class Vehiculos {
         coleccionVehiculos.add(vehiculo);
     }
 
+    @Override
     public Vehiculo buscar(Vehiculo vehiculo) {
         Objects.requireNonNull(vehiculo, "No se puede buscar un vehículo nulo.");
         int indice = coleccionVehiculos.indexOf(vehiculo);
@@ -39,6 +45,7 @@ public class Vehiculos {
 
     }
 
+    @Override
     public void borrar(Vehiculo vehiculo) throws OperationNotSupportedException {
         Objects.requireNonNull(vehiculo, "No se puede borrar un vehículo nulo.");
         if (buscar(vehiculo) == null) {

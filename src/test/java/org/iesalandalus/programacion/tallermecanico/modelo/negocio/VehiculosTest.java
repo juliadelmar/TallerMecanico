@@ -1,7 +1,6 @@
 package org.iesalandalus.programacion.tallermecanico.modelo.negocio;
-
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Vehiculos;
+import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
+import org.iesalanadalus.programacion.tallermecanico.modelo.negocio.memoria.Vehiculos;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +16,7 @@ class VehiculosTest {
 
     private static Vehiculo vehiculo1;
     private static Vehiculo vehiculo2;
-    private org.iesalandalus.programacion.tallermecanico.modelo.negocio.IVehiculos IVehiculos;
+    private org.iesalanadalus.programacion.tallermecanico.modelo.negocio.IVehiculos IVehiculos;
 
     @BeforeAll
     public static void setup() {
