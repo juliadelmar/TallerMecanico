@@ -1,9 +1,5 @@
 package org.iesalandalus.programacion.tallermecanico.modelo.dominio;
 
-import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Cliente;
-import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Revision;
-import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Trabajo;
-import org.iesalanadalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
